@@ -1,0 +1,46 @@
+function test() {
+            
+          return  $.ajax({
+                url: "http://dummy.restapiexample.com/api/v1/employees",
+                type: "get",
+                data: {},
+                success: function (result) {
+                    return result.data
+                  
+                }
+            })
+           
+        }
+   
+
+        function who() {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    console.log("who")
+                    resolve( test());
+                }, 4000);
+            });
+        }
+        function what(a) {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    console.log("what",a)
+                    resolve(a);
+                }, 2000);
+            });
+        }
+        function where(b) {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    console.log("where",b)
+                    resolve('in the shadows');
+                }, 1000);
+            });
+        }
+        async function msg() {
+            const a = await who();
+            const b = await what(a);
+            const c = await where(b);
+            // console.log(`${a} ${b} ${c}`);
+        }
+        msg();
