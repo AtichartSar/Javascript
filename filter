@@ -1,0 +1,8 @@
+arr = [{"a":1},{"a":2},{"a":1}]
+
+const filteredArr = arr.filter(el => {
+  const duplicate = seen.has(el.a);
+  seen.add(el.a);
+  return !duplicate;
+});
+console.log(filteredArr)
